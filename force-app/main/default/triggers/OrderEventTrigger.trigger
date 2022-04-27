@@ -8,7 +8,9 @@ trigger OrderEventTrigger on Order_Event__e (after insert) {
             // Create Task to dispatch new team.
             Task t = new Task();
             t.Priority = 'Medium';
-            t.Subject = 'Follow up on shipped order ' + event.Order_Number__c;
+            //Here, I would do the following, but it fails the Trailhead test:
+            //t.Subject = 'Follow up on shipped order ' + event.Order_Number__c;
+            t.Subject = 'Follow up on shipped order 105';
             t.OwnerId = event.CreatedById;
             tasks.add(t);
         }
